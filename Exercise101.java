@@ -3,6 +3,8 @@ package gr.aueb.cf.ch10.Exercises;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -19,14 +21,8 @@ import java.util.Scanner;
  * λήγοντες, 5) να περιέχει το πολύ 3 αριθμούς στην ίδια δεκάδα.
  * Τέλος, εκτυπώνει τις τελικές εξάδες σε ένα αρχείο με όνομα της επιλογής σας και
  * κατάληξη.txt.
- * Hint. Ακολουθήστε τη διαδικασία που είχαμε δει για την παραγωγή 4άδων. Κάθε
- * παραγόμενη εξάδα μπορεί να αποθηκεύεται σε ένα πίνακα ο οποίος στη συνέχεια να
- * ελέγχεται από κάθε μία από τις αναφερόμενες μεθόδους (φίλτρα). Αν για
- * παράδειγμα μία εξάδα έχει αποθηκευτεί στον πίνακα arr, τότε για να ‘περάσει’ τα
- * φίλτρα που είναι ταυτόχρονα περιορισμοί, θα πρέπει να ελεγχθεί. Π.χ.
- * if (!isEven(arr)) && (!isOfdd(arr)) && (!isContiguous(arr)) && (!isSameEnding(arr)) &&
- * (!isSameTen), γράψε την εξάδα στο αρχείο εξόδου.
  */
+
 
 public class Exercise101 {
     public static void main(String[] args) {
@@ -35,11 +31,15 @@ public class Exercise101 {
 
         try {
             fileSize = fileSizer(path);
+
             sizeTester(path);
+
             int[] arr = new int[fileSize];
             arr = fileReader(path);
 
             Arrays.sort(arr);
+
+            sixSetCreator(arr);
 
         } catch (FileNotFoundException e) {
             System.err.println("ERROR");
@@ -108,9 +108,30 @@ public class Exercise101 {
             System.err.println("ERROR");
             e.printStackTrace();
             throw e;
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid integer in file");
+            e.printStackTrace();
+            throw e;
         }
-
     }
+
+    public static void printToFile(int[] toPrint) {
+        String outPath = "gr/aueb/cf/ch10/Exercises/approvedOutput.txt";
+        File outFile = new File(outPath);
+
+        try (
+                PrintStream printStrm = new PrintStream(outFile, StandardCharsets.UTF_8);
+        ){
+            for (int i = 0; i < toPrint.length; i++){
+                System.out.println(toPrint[i]);
+                printStrm.println(toPrint[i]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("ERROR");
+        }
+    }
+
     public static void sixSetCreator(int[] arr) {
         final int SIZE = 6;
         int[] result = new int[SIZE];
@@ -129,6 +150,10 @@ public class Exercise101 {
                                 result[3] = arr[l];
                                 result[4] = arr[m];
                                 result[5] = arr[n];
+
+                                if (maxFourEven(result) && maxFourOdd(result) && isContiguous(result) && isSameEnding(result) && isSameTen(result)) {
+                                    printToFile(result);
+                                }
                             }
                         }
                     }
@@ -136,4 +161,77 @@ public class Exercise101 {
             }
         }
     }
+
+    public static boolean maxFourEven(int[] arr) {
+        int i = 0;
+
+        for (int el: arr){
+            if (el % 2 == 0) {
+                i++;
+                if (i > 4) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static boolean maxFourOdd(int[] arr) {
+        int i = 0;
+
+        for (int el: arr){
+            if (el % 2 != 0) {
+                i++;
+                if (i > 4) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static boolean isContiguous(int[] arr) {
+        int consecutiveCount  = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i + 1] == arr[i] + 1 || arr[i + 1] == arr[i] - 1){
+                consecutiveCount ++;
+                if (consecutiveCount  > 2) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static boolean isSameEnding(int[] arr) {
+        int[] resultArr = new int[10];
+        int mod;
+        for (int el: arr) {
+            mod = el % 10;
+            resultArr[mod]++;
+        }
+        for (int el: resultArr) {
+            if (el > 3) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isSameTen(int[] arr) {
+        int[] resultArr = new int[10];
+        int mod;
+        for (int el: arr) {
+            mod = el / 10;
+            resultArr[mod]++;
+        }
+        for (int el: resultArr) {
+            if (el > 3) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }
