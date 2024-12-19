@@ -21,31 +21,36 @@ import java.util.Scanner;
  * λήγοντες, 5) να περιέχει το πολύ 3 αριθμούς στην ίδια δεκάδα.
  * Τέλος, εκτυπώνει τις τελικές εξάδες σε ένα αρχείο με όνομα της επιλογής σας και
  * κατάληξη.txt.
+ * https://github.com/a8anassis/CF7-Testbed/blob/main/src/gr/aueb/cf/solutions/ch6/LottoApp.java
  */
 
 
 public class Exercise101 {
     public static void main(String[] args) {
-        String path = "gr/aueb/cf/ch10/Exercises/numbers.txt";
+        String path = "C:\\Users\\User\\IdeaProjects\\CF7-TestBed\\src\\gr\\aueb\\cf\\ch10\\Exercises\\numbers.txt";
         int fileSize = 0;
 
         try {
+            System.out.println("Starting fileSizer...");
             fileSize = fileSizer(path);
 
+            System.out.println("Starting sizeTester...");
             sizeTester(path);
 
-            int[] arr = new int[fileSize];
-            arr = fileReader(path);
+            System.out.println("Starting fileReader...");
+//            int[] arr = new int[fileSize];
+            int [] arr = fileReader(path);
 
+            System.out.println("Sorting array...");
             Arrays.sort(arr);
 
+            System.out.println("Starting sixSetCreator...");
             sixSetCreator(arr);
 
         } catch (FileNotFoundException e) {
             System.err.println("ERROR");
             e.printStackTrace();
         }
-
     }
 
     public static int fileSizer (String path) throws FileNotFoundException {
@@ -54,12 +59,15 @@ public class Exercise101 {
 
         try (Scanner in = new Scanner(fd)) {
             while (in.hasNextLine()) {
+                in.nextLine();
                 i++;
+                System.out.println("Reading line " + i);  // Debugging: Prints the line count.
             }
+            System.out.println("Total lines in file: " + i);  // Debugging: Prints the final line count.
             return i;
 
         } catch (FileNotFoundException e) {
-            System.err.println("ERROR");
+            System.err.println("ERROR: File not found");
             e.printStackTrace();
             throw e;
         }
@@ -69,6 +77,7 @@ public class Exercise101 {
         int size;
         try {
             size = fileSizer(path);
+            System.out.println("File size: " + size);  // Debugging: Prints the file size.
             if (size < 7 || size > 49) {
                 throw new Exception ("INVALID FILE SIZE");
             }
@@ -94,6 +103,7 @@ public class Exercise101 {
         }
 
         int[] arr = new int[size];
+        System.out.println("Debugging fileReader function..."); //debug print
 
         try (Scanner in = new Scanner(fd)) {
             while (in.hasNextLine()) {
@@ -116,15 +126,15 @@ public class Exercise101 {
     }
 
     public static void printToFile(int[] toPrint) {
-        String outPath = "gr/aueb/cf/ch10/Exercises/approvedOutput.txt";
+        String outPath = "C:\\Users\\User\\IdeaProjects\\CF7-TestBed\\src\\gr\\aueb\\cf\\ch10\\Exercises\\approvedOutput.txt";
         File outFile = new File(outPath);
 
         try (
                 PrintStream printStrm = new PrintStream(outFile, StandardCharsets.UTF_8);
         ){
             for (int i = 0; i < toPrint.length; i++){
-                System.out.println(toPrint[i]);
-                printStrm.println(toPrint[i]);
+                System.out.print(toPrint[i]);
+                printStrm.print(toPrint[i]);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -151,8 +161,46 @@ public class Exercise101 {
                                 result[4] = arr[m];
                                 result[5] = arr[n];
 
+                                // Debug print to show each combination generated
+//                                System.out.println("Generated combination: " + Arrays.toString(result));
+
+                                System.out.println("Checking combination: " + Arrays.toString(result));
+
+//                                if (maxFourEven(result)) {
+//                                    System.out.println("Passed maxFourEven");
+//                                } else {
+//                                    System.out.println("Failed maxFourEven");
+//                                }
+//
+//                                if (maxFourOdd(result)) {
+//                                    System.out.println("Passed maxFourOdd");
+//                                } else {
+//                                    System.out.println("Failed maxFourOdd");
+//                                }
+//
+//                                if (isContiguous(result)) {
+//                                    System.out.println("Passed isContiguous");
+//                                } else {
+//                                    System.out.println("Failed isContiguous");
+//                                }
+//
+//                                if (isSameEnding(result)) {
+//                                    System.out.println("Passed isSameEnding");
+//                                } else {
+//                                    System.out.println("Failed isSameEnding");
+//                                }
+//
+//                                if (isSameTen(result)) {
+//                                    System.out.println("Passed isSameTen");
+//                                } else {
+//                                    System.out.println("Failed isSameTen");
+//                                }
+
                                 if (maxFourEven(result) && maxFourOdd(result) && isContiguous(result) && isSameEnding(result) && isSameTen(result)) {
+                                    System.out.println("passed all tests OK");
                                     printToFile(result);
+                                } else {
+                                    System.out.println("did NOT pass all tests");
                                 }
                             }
                         }
