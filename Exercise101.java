@@ -1,9 +1,6 @@
 package gr.aueb.cf.ch10.Exercises;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,7 +59,7 @@ public class Exercise101 {
             while (in.hasNextLine()) {
                 in.nextLine();
                 i++;
-                System.out.println("Reading line " + i);  // Debugging: Prints the line count.
+//                System.out.println("Reading line " + i);  // Debugging: Prints the line count.
             }
             System.out.println("Total lines in file: " + i);  // Debugging: Prints the final line count.
             return i;
@@ -131,12 +128,14 @@ public class Exercise101 {
         File outFile = new File(outPath);
 
         try (
-                PrintStream printStrm = new PrintStream(outFile, StandardCharsets.UTF_8);
+//                PrintStream printStrm = new PrintStream(outFile, StandardCharsets.UTF_8);
+                PrintStream printStrm = new PrintStream(new FileOutputStream(outFile, true), true, StandardCharsets.UTF_8);
         ){
             for (int i = 0; i < toPrint.length; i++){
-                System.out.print(toPrint[i]);
-                printStrm.print(toPrint[i]);
+                System.out.print(toPrint[i] + " ");
+                printStrm.print(toPrint[i] + " ");
             }
+            printStrm.print("\n");
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("ERROR");
@@ -162,40 +161,7 @@ public class Exercise101 {
                                 result[4] = arr[m];
                                 result[5] = arr[n];
 
-                                // Debug print to show each combination generated
-//                                System.out.println("Generated combination: " + Arrays.toString(result));
 
-                                System.out.println("Checking combination: " + Arrays.toString(result));
-
-//                                if (maxFourEven(result)) {
-//                                    System.out.println("Passed maxFourEven");
-//                                } else {
-//                                    System.out.println("Failed maxFourEven");
-//                                }
-//
-//                                if (maxFourOdd(result)) {
-//                                    System.out.println("Passed maxFourOdd");
-//                                } else {
-//                                    System.out.println("Failed maxFourOdd");
-//                                }
-//
-//                                if (isContiguous(result)) {
-//                                    System.out.println("Passed isContiguous");
-//                                } else {
-//                                    System.out.println("Failed isContiguous");
-//                                }
-//
-//                                if (isSameEnding(result)) {
-//                                    System.out.println("Passed isSameEnding");
-//                                } else {
-//                                    System.out.println("Failed isSameEnding");
-//                                }
-//
-//                                if (isSameTen(result)) {
-//                                    System.out.println("Passed isSameTen");
-//                                } else {
-//                                    System.out.println("Failed isSameTen");
-//                                }
 
                                 if (maxFourEven(result) && maxFourOdd(result) && isContiguous(result) && isSameEnding(result) && isSameTen(result)) {
                                     System.out.println("passed all tests OK");
