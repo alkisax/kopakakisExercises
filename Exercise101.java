@@ -22,6 +22,7 @@ import java.util.Scanner;
  * Τέλος, εκτυπώνει τις τελικές εξάδες σε ένα αρχείο με όνομα της επιλογής σας και
  * κατάληξη.txt.
  * https://github.com/a8anassis/CF7-Testbed/blob/main/src/gr/aueb/cf/solutions/ch6/LottoApp.java
+ *
  */
 
 
