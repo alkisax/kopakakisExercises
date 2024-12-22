@@ -18,8 +18,20 @@ public class Exercise104 {
                 gameplay(emptyBoard, in);
 
                 System.out.print("Do you want to play again? (yes/no): ");
+                in.nextLine();
                 String response = in.nextLine().trim().toLowerCase();
-                replay = response.equals("yes");
+
+//                replay = response.equals("yes");
+                // Check if the response is "yes" or "no"
+
+                if (response.equals("yes")) {
+                    replay = true;
+                } else if (response.equals("no")) {
+                    replay = false;
+                } else {
+                    System.out.println("Invalid input. Please type 'yes' or 'no'. Exiting... GG bb");
+                    replay = false;
+                }
 
             } catch (Exception e) {
                 System.err.println("ERROR");
@@ -79,8 +91,24 @@ public class Exercise104 {
         int[] move = new int[2];
         while (true) {
             System.out.print("Enter column (0, 1, or 2): ");
+
+            //problem
+            if (!in.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 0 and 2.");
+                in.next();
+                continue;
+            }
+
             move[0] = in.nextInt();
             System.out.print("Enter row (0, 1, or 2): ");
+
+            //problem
+            if (!in.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 0 and 2.");
+                in.next();
+                continue;
+            }
+
             move[1] = in.nextInt();
 
             if (moveChecker(board,move)) {
@@ -100,8 +128,20 @@ public class Exercise104 {
         int[] move = new int[2];
         while (true) {
             System.out.print("Enter column (0, 1, or 2): ");
+            //problem
+            if (!in.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 0 and 2.");
+                in.next();
+                continue;
+            }
             move[0] = in.nextInt();
             System.out.print("Enter row (0, 1, or 2): ");
+            //problem
+            if (!in.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 0 and 2.");
+                in.next();
+                continue;
+            }
             move[1] = in.nextInt();
 
             if (moveChecker(board,move)) {
@@ -135,22 +175,36 @@ public class Exercise104 {
     }
 
     public static boolean moveChecker(String[][] board, int[] move){
-        if (move[0] < 0 || move[0] >= board.length || move[1] < 0 || move[1] >= board[0].length) {
-            System.out.println("Invalid move. Please enter a row and column between 0 and 2.");
-            return false;
-        }
 
-        if (board[move[0]][move[1]].equals(" ")) {
-            return true;
-        } else {
-            System.out.println("That spot is already taken. Please try again.");
+        try {
+            if (
+                    move[0] < 0 ||
+                            move[0] >= board[0].length ||
+                            move[1] < 0 ||
+                            move[1] >= board.length
+            ) {
+                System.out.println("Invalid move. Please enter a row and column between 0 and 2.");
+                return false;
+            }
+            if (board[move[1]][move[0]].equals(" ")) {
+                return true;
+            } else {
+                System.out.println("That spot is already taken. Please try again.");
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter numbers between 0 and 2.");
             return false;
         }
     }
 
     public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+//        System.out.print("\033[H\033[2J");
+//        System.out.flush();
+        // Print 50 newlines to simulate clearing the screen -> gpt solution
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
 
     public static int isGameOver (String[][] board) {
