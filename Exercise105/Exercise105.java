@@ -23,6 +23,7 @@ public class Exercise105 {
 
         while (reRun){
             clearScreen();
+            System.out.println("the theater is empty: " + isEmpty());
             displayBooked();
             int[] input = userInt(in, theater);
             if (input[0] == 1) {
@@ -60,7 +61,6 @@ public class Exercise105 {
     }
 
     public static int[] userInt(Scanner in, boolean[][] theater){
-        System.out.println("Do you want to book (1) or Cancel (2)");
         boolean run = true;
         boolean innerRun = true;
         int choice = -1;
@@ -68,10 +68,16 @@ public class Exercise105 {
         int columnCharNum = -1;
         boolean isAvailable;
 
+        System.out.println("Do you want to book (1) or Cancel (2)");
+
         while(run) {
             try {
                 choice = Integer.valueOf(in.nextLine());
                 if (choice == 1 || choice == 2) {
+                    if (choice == 2 && isEmpty()) {
+                        System.out.println("The theater is empty. No cancellation possible.");
+                        System.exit(-1);
+                    }
                     while (innerRun) {
                         int[] place = columnNumInterface(in);
                         columnCharNum = place[0];
@@ -205,10 +211,23 @@ public class Exercise105 {
         for (int i = 0; i < theater.length; i++) {
             for (int j = 0; j < theater[i].length; j++) {
                 if (theater[i][j] == false){
-                    System.out.print(numLetterConventor(j + 1) + (i + 1) + " |");
+                    // GPT: Adjusting column number to letter manually
+                    char columnLetter = (char) ('A' + j);
+                    System.out.print("" + columnLetter + (i + 1) + " | ");
                 }
             }
         }
         System.out.println();
+    }
+
+    public static boolean isEmpty() {
+        for (boolean[] row: theater) {
+            for (boolean el: row) {
+                if (!el) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
