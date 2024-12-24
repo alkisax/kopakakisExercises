@@ -3,6 +3,7 @@ package gr.aueb.cf.ch10.Exercises.Exercise103;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.channels.DatagramChannel;
 import java.util.Scanner;
 
 /**
@@ -132,15 +133,41 @@ public class Exercise103 {
     }
 
     public static void printer(int[][] charMap) {
+
+        charMap= bubbleSort(charMap);
+
         for (int i = 0; i < charMap.length; i++) {
             int count = charMap[i][0];
-            char character = (char) i;
-            if (i < 65 || i == 127) {
-                System.out.print("Character: " + character + ". No of times: " + count + " | ");
-            } else {
+            if (count != 0){
+                char character = (char) i;
                 System.out.println("Character: " + character + ". No of times: " + count + " | ");
+//                if (i < 65 || i == 127) {
+//                    System.out.print("Character: " + character + ". No of times: " + count + " | ");
+//                } else {
+//                }
             }
-
         }
+    }
+
+    public static int[][] bubbleSort(int[][] arr) {
+        for (int i = arr.length - 1; i > 0; i--){
+            for (int j = 0; j < i; j++) {
+
+                if (arr[j].length < 2 || arr[j + 1].length < 2) {
+                    continue;
+                }
+
+                if (arr[j][1] > arr[j+1][1]) {
+                    swap(arr, j, j+1);
+                }
+            }
+        }
+        return arr;
+    }
+
+    public static void swap(int[][] arr, int i, int j){
+        int[] tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 }
