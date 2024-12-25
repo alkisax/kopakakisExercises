@@ -1,0 +1,53 @@
+"C:\Program Files\Amazon Corretto\jdk17.0.13_11\bin\java.exe" -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:57371,suspend=y,server=n -javaagent:C:\Users\User\AppData\Local\JetBrains\IdeaIC2024.2\captureAgent\debugger-agent.jar -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false -Ddebugger.agent.enable.coroutines=true -Dfile.encoding=UTF-8 -classpath "C:\Users\User\IdeaProjects\CF7-TestBed\out\production\CF7-TestBed;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar" gr.aueb.cf.ch10.Exercises.Exercise103.Exercise103
+Connected to the target VM, address: '127.0.0.1:57371', transport: 'socket'
+starting filesizer...
+Total chars in file: 3492
+size: 3492
+starting file reader...
+fullTextChar length: 3492
+starting space remover...
+number of whitespaces: 516
+length of fulTextCharClean: 2976
+starting array indexing...
+starting printer...
+Char: e. No.: 329 |
+Char: i. No.: 300 |
+Char: u. No.: 249 |
+Char: t. No.: 244 |
+Char: a. No.: 231 |
+Char: s. No.: 224 |
+Char: l. No.: 175 |
+Char: n. No.: 165 |
+Char: r. No.: 162 |
+Char: m. No.: 141 |
+Char: c. No.: 121 |
+Char: o. No.: 119 |
+Char: d. No.: 80 |
+Char: .. No.: 66 |
+Char: p. No.: 63 |
+Char: v. No.: 49 |
+Char: ,. No.: 43 |
+Char: g. No.: 38 |
+Char: q. No.: 32 |
+Char: b. No.: 29 |
+Char: f. No.: 24 |
+Char: x. No.: 12 |
+Char: h. No.: 11 |
+Char: P. No.: 9 |
+Char: D. No.: 7 |
+Char: E. No.: 6 |
+Char: I. No.: 6 |
+Char: M. No.: 6 |
+Char: N. No.: 6 |
+Char: S. No.: 6 |
+Char: V. No.: 6 |
+Char: A. No.: 5 |
+Char: U. No.: 4 |
+Char: j. No.: 3 |
+Char: C. No.: 2 |
+Char: F. No.: 1 |
+Char: L. No.: 1 |
+Char: Q. No.: 1 |
+Disconnected from the target VM, address: '127.0.0.1:57371', transport: 'socket'
+
+Process finished with exit code 0

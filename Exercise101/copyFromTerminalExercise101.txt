@@ -1,0 +1,43 @@
+"C:\Program Files\Amazon Corretto\jdk17.0.13_11\bin\java.exe" -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:57364,suspend=y,server=n -javaagent:C:\Users\User\AppData\Local\JetBrains\IdeaIC2024.2\captureAgent\debugger-agent.jar -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false -Ddebugger.agent.enable.coroutines=true -Dfile.encoding=UTF-8 -classpath "C:\Users\User\IdeaProjects\CF7-TestBed\out\production\CF7-TestBed;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar" gr.aueb.cf.ch10.Exercises.Exercise101.Exercise101
+Connected to the target VM, address: '127.0.0.1:57364', transport: 'socket'
+Starting fileSizer...
+Total lines in file: 8
+Starting sizeTester...
+Total lines in file: 8
+File size: 8
+Starting fileReader...
+Total lines in file: 8
+Debugging fileReader function...
+Sorting array...
+Starting sixSetCreator...
+passed all tests OK
+3 9 11 13 26 34 passed all tests OK
+3 9 11 13 26 42 did NOT pass all tests
+passed all tests OK
+3 9 11 13 34 42 did NOT pass all tests
+did NOT pass all tests
+passed all tests OK
+3 9 11 26 34 42 passed all tests OK
+3 9 11 26 34 47 passed all tests OK
+3 9 11 26 42 47 passed all tests OK
+3 9 11 34 42 47 passed all tests OK
+3 9 13 26 34 42 passed all tests OK
+3 9 13 26 34 47 passed all tests OK
+3 9 13 26 42 47 passed all tests OK
+3 9 13 34 42 47 passed all tests OK
+3 9 26 34 42 47 passed all tests OK
+3 11 13 26 34 42 passed all tests OK
+3 11 13 26 34 47 passed all tests OK
+3 11 13 26 42 47 passed all tests OK
+3 11 13 34 42 47 passed all tests OK
+3 11 26 34 42 47 passed all tests OK
+3 13 26 34 42 47 passed all tests OK
+9 11 13 26 34 42 passed all tests OK
+9 11 13 26 34 47 passed all tests OK
+9 11 13 26 42 47 passed all tests OK
+9 11 13 34 42 47 passed all tests OK
+9 11 26 34 42 47 passed all tests OK
+9 13 26 34 42 47 passed all tests OK
+11 13 26 34 42 47 Disconnected from the target VM, address: '127.0.0.1:57364', transport: 'socket'
+
+Process finished with exit code 0

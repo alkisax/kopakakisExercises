@@ -1,0 +1,129 @@
+"C:\Program Files\Amazon Corretto\jdk17.0.13_11\bin\java.exe" -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:57380,suspend=y,server=n -javaagent:C:\Users\User\AppData\Local\JetBrains\IdeaIC2024.2\captureAgent\debugger-agent.jar -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false -Ddebugger.agent.enable.coroutines=true -Dfile.encoding=UTF-8 -classpath "C:\Users\User\IdeaProjects\CF7-TestBed\out\production\CF7-TestBed;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar" gr.aueb.cf.ch10.Exercises.Exercise105.Exercise105
+Connected to the target VM, address: '127.0.0.1:57380', transport: 'socket'
+
+the theater is empty: true
+Booked seats:
+
+Do you want to book (1) or Cancel (2)
+ccxfzv
+invalid input. Please enter a valid number (1 or 2)
+3
+invalid input. Please enter a valid number (1 or 2)
+-1
+invalid input. Please enter a valid number (1 or 2)
+1
+Please give column letter (A-L)
+a
+Please give row number (1-30)
+1
+seat booked
+Exit: 0, Rerun: 1
+1
+
+the theater is empty: false
+Booked seats:
+A1 |
+Do you want to book (1) or Cancel (2)
+1
+Please give column letter (A-L)
+a
+Please give row number (1-30)
+1
+I'm sorry, the seat is already booked. Please choose another seat.
+Please give column letter (A-L)
+a
+Please give row number (1-30)
+2
+seat booked
+Exit: 0, Rerun: 1
+1
+
+the theater is empty: false
+Booked seats:
+A1 | A2 |
+Do you want to book (1) or Cancel (2)
+1
+Please give column letter (A-L)
+awef
+Invalid input. Please enter a valid column letter (A-Z).
+Please give column letter (A-L)
+m
+Invalid input. Please enter a valid column letter (A-Z).
+Please give column letter (A-L)
+a
+Please give row number (1-30)
+31
+Invalid input. Please enter a valid row number (1-30).
+Please give row number (1-30)
+-1
+Invalid input. Please enter a valid row number (1-30).
+Please give row number (1-30)
+3
+seat booked
+Exit: 0, Rerun: 1
+1
+
+the theater is empty: false
+Booked seats:
+A1 | A2 | A3 |
+Do you want to book (1) or Cancel (2)
+2
+Please give column letter (A-L)
+m
+Invalid input. Please enter a valid column letter (A-Z).
+Please give column letter (A-L)
+a
+Please give row number (1-30)
+-1
+Invalid input. Please enter a valid row number (1-30).
+Please give row number (1-30)
+31
+Invalid input. Please enter a valid row number (1-30).
+Please give row number (1-30)
+11
+I'm sorry, the seat is not booked. Please choose another seat.
+Please give column letter (A-L)
+a
+Please give row number (1-30)
+1
+seat canceled
+Exit: 0, Rerun: 1
+1
+
+the theater is empty: false
+Booked seats:
+A2 | A3 |
+Do you want to book (1) or Cancel (2)
+2
+Please give column letter (A-L)
+a
+Please give row number (1-30)
+2
+seat canceled
+Exit: 0, Rerun: 1
+1
+
+the theater is empty: false
+Booked seats:
+A3 |
+Do you want to book (1) or Cancel (2)
+a
+invalid input. Please enter a valid number (1 or 2)
+2
+Please give column letter (A-L)
+a
+Please give row number (1-30)
+3
+seat canceled
+Exit: 0, Rerun: 1
+1
+
+the theater is empty: true
+Booked seats:
+
+Do you want to book (1) or Cancel (2)
+2
+The theater is empty. No cancellation possible.
+Disconnected from the target VM, address: '127.0.0.1:57380', transport: 'socket'
+
+Process finished with exit code -1
