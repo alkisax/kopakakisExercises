@@ -140,15 +140,14 @@ public class Exercise103 {
             int count = charMap[i][0];
             if (count != 0){
                 char character = (char) i;
-                System.out.println("Character: " + character + ". No of times: " + count + " | ");
-//                if (i < 65 || i == 127) {
-//                    System.out.print("Character: " + character + ". No of times: " + count + " | ");
-//                } else {
-//                }
+                System.out.println("Char: " + character + ". No.: " + count + " | ");
             }
         }
     }
 
+    /*
+    C:\Users\User\IdeaProjects\CF7-TestBed\src\gr\aueb\cf\ch6\BubbleSort.java
+     */
     public static int[][] bubbleSort(int[][] arr) {
         for (int i = arr.length - 1; i > 0; i--){
             for (int j = 0; j < i; j++) {
