@@ -1,8 +1,7 @@
-package gr.aueb.cf.ch10.Exercises;
+package gr.aueb.cf.ch10.Exercises.Exercises101;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -25,7 +24,7 @@ import java.util.Scanner;
 
 public class Exercise101 {
     public static void main(String[] args) {
-        String path = "C:\\Users\\User\\IdeaProjects\\CF7-TestBed\\src\\gr\\aueb\\cf\\ch10\\Exercises\\numbers.txt";
+        String path = "C:\\Users\\User\\IdeaProjects\\CF7-TestBed\\src\\gr\\aueb\\cf\\ch10\\Exercises\\Exercises101\\numbers.txt";
         int fileSize = 0;
 
         try {
@@ -124,7 +123,7 @@ public class Exercise101 {
     }
 
     public static void printToFile(int[] toPrint) {
-        String outPath = "C:\\Users\\User\\IdeaProjects\\CF7-TestBed\\src\\gr\\aueb\\cf\\ch10\\Exercises\\approvedOutput.txt";
+        String outPath = "C:\\Users\\User\\IdeaProjects\\CF7-TestBed\\src\\gr\\aueb\\cf\\ch10\\Exercises\\Exercises101\\approvedOutput.txt";
         File outFile = new File(outPath);
 
         try (
