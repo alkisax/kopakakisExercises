@@ -134,12 +134,13 @@ public class Exercise103 {
 
     public static void printer(int[][] charMap) {
 
-        charMap= bubbleSort(charMap);
+//        charMap= bubbleSort(charMap);
+        int[][] sortedMap = bubbleSort(charMap);
 
-        for (int i = 0; i < charMap.length; i++) {
-            int count = charMap[i][0];
+        for (int i = 0; i < sortedMap.length; i++) {
+            int count = sortedMap[i][0];
             if (count != 0){
-                char character = (char) i;
+                char character = (char) sortedMap[i][1];
                 System.out.println("Char: " + character + ". No.: " + count + " | ");
             }
         }
@@ -148,20 +149,24 @@ public class Exercise103 {
     /*
     C:\Users\User\IdeaProjects\CF7-TestBed\src\gr\aueb\cf\ch6\BubbleSort.java
      */
-    public static int[][] bubbleSort(int[][] arr) {
-        for (int i = arr.length - 1; i > 0; i--){
+    public static int[][] bubbleSort(int[][] charMap) {
+
+        int[][] tempMap = new int [charMap.length][2];
+
+        for (int i =0; i <charMap.length; i++){
+            tempMap[i][0] = charMap[i][0];  //count
+            tempMap[i][1] = i;  //ch index
+        }
+
+        for (int i = tempMap.length - 1; i > 0; i--){
             for (int j = 0; j < i; j++) {
 
-                if (arr[j].length < 2 || arr[j + 1].length < 2) {
-                    continue;
-                }
-
-                if (arr[j][1] > arr[j+1][1]) {
-                    swap(arr, j, j+1);
+                if (tempMap[j][0] < tempMap[j+1][0]) {
+                    swap(tempMap, j, j+1);
                 }
             }
         }
-        return arr;
+        return tempMap;
     }
 
     public static void swap(int[][] arr, int i, int j){
