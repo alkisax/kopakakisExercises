@@ -1,6 +1,5 @@
 package gr.aueb.cf.ch10.Exercises.Exercise105;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**

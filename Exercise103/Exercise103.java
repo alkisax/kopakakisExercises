@@ -3,7 +3,6 @@ package gr.aueb.cf.ch10.Exercises.Exercise103;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.channels.DatagramChannel;
 import java.util.Scanner;
 
 /**
