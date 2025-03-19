@@ -1,63 +1,64 @@
-# Theater Seat Booking System
+# Tic-Tac-Toe Game - Java Implementation
 
-This is a Java project designed to simulate a theater seat booking and cancellation system for a theater with 30 rows and 12 columns. The program uses a 2D array (boolean[][]) to represent the seating layout, where `true` indicates that a seat is available and `false` means it has been booked.
+This project is a simple console-based implementation of the Tic-Tac-Toe (Three-in-a-Row) game in Java. It allows two players to take turns playing with "X" and "Y" on a 3x3 grid. The game ends when one player wins by aligning three of their marks in a row, column, or diagonal, or when the board is full with no winner (draw).
 
 ## Project Structure
 
-### 1. **Main Class: `Exercise105`**
+### Main Class: `Exercise104`
 
-The project consists of a single class `Exercise105` which handles the booking and cancellation of theater seats. The core functionality is implemented through a set of methods that interact with the 2D array representing the theater's seating chart.
+The main class controls the flow of the game, alternating turns between the two players and handling input and output. It contains the following methods:
 
-### 2. **Key Methods**
+### Methods
 
-#### `main(String[] args)`
-This is the entry point of the application. It initiates the theater array, prompts the user for input, and continuously asks for booking or cancellation choices until the user decides to exit.
+- **`main(String[] args)`**  
+  Starts the game loop. It initializes the game board, handles player turns, checks for game over conditions, and asks if the players want to play again after a game ends.
 
-#### `reRun(Scanner in)`
-This method prompts the user whether they want to exit the program or perform another operation (book/cancel a seat). It returns `true` if the user wants to continue and `false` otherwise.
+- **`gridCreator()`**  
+  Creates and returns a 3x3 board initialized with empty spaces (" "). It represents the Tic-Tac-Toe grid where the players will make their moves.
 
-#### `userInt(Scanner in, boolean[][] theater)`
-This method asks the user whether they want to book or cancel a seat. It then prompts for the column letter (A-L) and row number (1-30), and checks if the seat is available for booking or cancellation. It returns an array with the user's choice (1 for booking, 2 for cancellation), column number, and row number.
+- **`gameplay(String[][] board, Scanner in)`**  
+  Handles the game loop where players take turns. It alternates between player "X" and player "Y". After each turn, it checks if the game has ended (draw, "X" wins, or "Y" wins).
 
-#### `columnNumInterface(Scanner in)`
-Prompts the user for a valid column letter (A-L) and row number (1-30). It ensures that the user provides valid input and returns the corresponding column number and row number.
+- **`xRound(String[][] board, Scanner in)`**  
+  Manages player "X"'s turn. It clears the screen, displays the current game board, and prompts player "X" to make a move. It validates the move and updates the board.
 
-#### `letterNumConventor(String ch)`
-Converts a column letter (A-L) to its corresponding column number. For example, 'A' becomes 1, 'B' becomes 2, and so on.
+- **`yRound(String[][] board, Scanner in)`**  
+  Similar to `xRound`, this method manages player "Y"'s turn. It performs the same operations, allowing "Y" to place their mark on the board.
 
-#### `numLetterConventor(int num)`
-Converts a column number back to its corresponding letter. For example, 1 becomes 'A', 2 becomes 'B', etc.
+- **`showGrid(String[][] board)`**  
+  Displays the current state of the board on the console. It prints the grid with the "X" and "Y" marks and the dividers between rows.
 
-#### `checkAvailability(int column, int row, boolean[][] theater)`
-Checks if a specific seat (given by column and row) is available (not booked). Returns `true` if the seat is available and `false` if it is already booked.
+- **`moveChecker(String[][] board, int[] move)`**  
+  Checks if the player's move is valid. It ensures that the chosen row and column are within the valid range and that the selected spot is not already taken.
 
-#### `arrayInitialiser(boolean[][] theater)`
-Initializes the theater array, marking all seats as available (`true`). This method sets up the seating layout before any bookings are made.
+- **`clearScreen()`**  
+  Clears the console screen by printing 50 newlines. This is used to refresh the view after each player's move.
 
-#### `book(char column, int row)`
-Books a seat at the specified column and row by setting the corresponding value in the theater array to `false`.
+- **`isGameOver(String[][] board)`**  
+  Checks the game status after each move. It calls other methods (`drawChecker`, `xWinChecker`, `yWinChecker`) to determine if the game has ended in a draw, or if either player has won.
 
-#### `cancel(char column, int row)`
-Cancels the booking of a seat at the specified column and row by setting the corresponding value in the theater array to `true`.
+- **`drawChecker(String[][] board)`**  
+  Checks if the game has ended in a draw. It returns `true` if there are no empty spots left on the board.
 
-#### `clearScreen()`
-Clears the console screen by printing 40 empty lines. This helps in creating a cleaner output interface for the user.
+- **`xWinChecker(String[][] board)`**  
+  Checks if player "X" has won the game. It checks all possible winning combinations (rows, columns, diagonals).
 
-#### `displayBooked()`
-Displays all the booked seats in the theater by iterating through the theater array. Booked seats are shown in the format "ColumnRow", e.g., "A1", "B2".
+- **`yWinChecker(String[][] board)`**  
+  Similar to `xWinChecker`, but checks for a win by player "Y".
 
-#### `isEmpty()`
-Checks if all seats in the theater are available (not booked). Returns `true` if all seats are available, and `false` if any seat is booked.
+- **`winChecker(String c, String[][] board)`**  
+  A helper method that checks if a given player (either "X" or "Y") has won by aligning three of their marks in a row, column, or diagonal.
 
-## Usage
+## How to Play
 
-1. **Book a Seat:**
-   To book a seat, the user chooses the option to book (1), then selects a seat by specifying the column letter (A-L) and row number (1-30).
+1. The game starts with an empty 3x3 grid.
+2. Player "X" and Player "Y" take turns to enter their moves.
+3. To make a move, a player must input the column (0, 1, or 2) and the row (0, 1, or 2) where they want to place their mark.
+4. The game will announce the result after every game (win or draw).
+5. Players can choose to play again after a game ends.
 
-2. **Cancel a Seat:**
-   To cancel a booking, the user chooses the option to cancel (2), then selects the seat they wish to cancel by specifying the column letter (A-L) and row number (1-30).
+## Additional Notes
 
-3. **Exit or Re-run:**
-   After each booking or cancellation, the user is prompted whether they want to exit the program or continue with another operation.
-
-
+- This implementation uses a simple console interface. To restart the game, players will be asked if they want to play again after each game.
+- The screen is cleared between turns to give a fresh view of the board after each move (note that this feature is implemented via printing 50 newlines).
+- Input validation ensures players can only choose valid positions on the grid.
